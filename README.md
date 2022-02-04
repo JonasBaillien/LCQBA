@@ -24,9 +24,10 @@ Required libraries:
   "expm"
   "alabama"
   
-The repository consists of 3 main parts:
-  - Functions used in either simulation studies or practical examples. These will be made available either in a new R-package, or as an extension to the "QBAsyDist" package.
-  - Simulation studies. Results from simulation studies need to be stored locally. Directories to store and bundle these outputs need to be changed to their local counterpart. Run times might vary depending on the chosen model.
-  - Examples and plots. For examples, the data needs to be loaded in. Same holds for plots of simulations. Bundles output is loaded in from a local directory.
+The repository consists of 4 main parts:
+  - Functions used in either simulation studies or practical examples. These will be made available either in a new R-package, or as an extension to the "QBAsyDist" package. These are the files "1Ddistributions.R", "FIM.R", "LCQBAdensity.R", "LCQBAfit.R" and "rLCQBA.R".
+  - Simulation studies. Results from simulation studies need to be stored locally. Directories to store and bundle these outputs need to be changed to their local counterpart. Run times might vary depending on the chosen model. This is the file "Simulations.R", plots based on this output are generated in "PlotsPaper.R".
+  - Examples and plots. For examples, the data needs to be loaded in. Same holds for plots of simulations. Bundles output is loaded in from a local directory. Together with heatmaps and DD-plots, these are found in "PlotsPaper.R"
+  - 2 scripts: one for fitting all possible (up to permutation) LCQBA-models considered here, one for calculating some measures of skewness for the discussed distributions. 
 
 Comments are added to the functions, please read these to ensure proper use.
