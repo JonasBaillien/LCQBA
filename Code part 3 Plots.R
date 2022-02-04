@@ -1,3 +1,5 @@
+# load in the required functions
+setwd(dir = choose.dir())
 source(file="Code part 1 Functions.R")
 
 
@@ -46,6 +48,8 @@ xx=as.matrix(expand.grid(xtemp,ytemp)) # square grid
 
 fmat=apply(xx,1,densityf,basefunc=basefunc,alpha=alpha,mu=location,B=solve(A),tpars=0)
 fmat=matrix(fmat,nrow=n)
+
+# plot
 x11()
 par(mar=c(5.1, 5.1, 4.1, 2.1))
 contour(xtemp,ytemp,fmat,xlab=expression(X[1]),ylab=expression(X[2]),cex.lab=1.5,cex.axis=1.5,lwd=2,cex=2)
