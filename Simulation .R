@@ -10,8 +10,8 @@
 # this is the directory where everything is saved. 
 setwd(dir = choose.dir())
 
-# If the file "Code part 1 Functions.R" is not saved in the previously set directory, add the correct path.
-source("Code part 1 Functions.R")
+# load in all functions used with their correct path, see README for list of function files
+source("names")
 
 
 
@@ -184,8 +184,8 @@ dir.create(paste0("~/D",d,"S",sampsize))
 result=foreach(i=1:reps,.packages=c('combinat','mrfDepth','nloptr',"optimx"),
                .combine = "cbind",.verbose = T,.errorhandling="remove") %dopar% {
                  
-                 # required files
-                 source(file="Code part 1 Functions.R")
+                 # load in files again
+                 source(file="names")
 
                  # generating a sample
                  sample=Xsample(A=A,location=location,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed-i+1)
@@ -195,7 +195,7 @@ result=foreach(i=1:reps,.packages=c('combinat','mrfDepth','nloptr',"optimx"),
                  start.time <- Sys.time()
                  
                  # fitting the model to the data
-                 fit=MVQBAFD_fit(data = X,basefunc = basefunc,seed = seed+i,maxiter = maxiter,tol = tol,numstarts=numstarts)
+                 fit=LCQBAFD_fit(data = X,basefunc = basefunc,seed = seed+i,maxiter = maxiter,tol = tol,numstarts=numstarts)
                  
                  
                  fits=c(as.matrix(fit$`fitted parameters`,nrow=1),fit$`log likelihood fit`)
