@@ -38,8 +38,8 @@ nmods=length(basefuncs[,1])
 
 ### create folder to store output in (put correct name here) ###
 ################################################################
-set.dir(choose.dir()
-dir.create(paste0("~/pokemon"))
+setwd(dir = choose.dir())
+dir.create(paste0("~/name"))
 
 # also change the file locations further below to write in this directory
 
@@ -75,7 +75,7 @@ result=foreach(i=1:nmods,.packages=c('nloptr','optimx'),
                  output=c(as.numeric(fit$`fitted parameters`),fit$`log likelihood fit`)
                  
                  # storing the output, put the right directory here (change the last file location)
-                 filename=paste0("~/pokemon/M",i,".csv")
+                 filename=paste0("~/name/M",i,".csv")
                  write.csv(output,file=filename)
                }
 stopCluster(cl)
@@ -96,7 +96,7 @@ basefunctions_fit=basefuncs
 
 for (i in 1:nmods){
   # put the right directory here (change the last file location)
-  temp_data = t(read.csv(paste0("~/pokemon/M",i,".csv"), row.names=1))
+  temp_data = t(read.csv(paste0("~/name/M",i,".csv"), row.names=1))
   
   alpha_fit[i,] = as.numeric(temp_data[1:d])
   
@@ -119,4 +119,4 @@ for (i in 1:nmods){
 modelfit=list("alpha"=alpha_fit,"mu"=mu_fit,"A"=A_fit,"df"=df_fit,"logl"=loglikelihood_fit,"basefunc"=basefunctions_fit)
 
 # save output in correct location (change directory name if needed)
-save(modelfit,file="~/pokemon/fittedmodels_pokemon.Rdata")
+save(modelfit,file="~/name/fittedmodels_pokemon.Rdata")
