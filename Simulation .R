@@ -22,8 +22,8 @@ source("Code part 1 Functions.R")
 ## Simulation setting 1
 reps=400                      # repetitions
 sampsize=800                  # sample size
-dims=2                        # dimensions
-A=matrix(c(4,-3,1,4),nrow=dims,ncol=dims) # transpose of A is used to generate samples according to the definition
+d=2                        # dimensions
+A=matrix(c(4,-3,1,4),nrow=d,ncol=d) # transpose of A is used to generate samples according to the definition
 location=c(0,0)               # mu
 alpha=c(0.35,0.7)             # alpha
 basefunc=c("normal","t")      # type of base function
@@ -32,7 +32,7 @@ tpars=c(6)                    # degrees of freedom
 
 # # Simulation setting 2
 # reps=400
-# dims=6
+# d=6
 # sampsize=400 #100, 200, 400, 800
 # A=matrix(
 #   c(10,0 ,5 ,0 ,1 ,0 ,
@@ -40,10 +40,10 @@ tpars=c(6)                    # degrees of freedom
 #     -5,-1,10,0 ,6 ,0 ,
 #     0 ,0 ,0 ,10,0 ,-2,
 #     -1,4 ,-6,0 ,10,0 ,
-#     0 ,-2,0 ,2 ,0 ,10),nrow=dims,ncol=dims,byrow=T) # of 20 op hoofddiagonaal
-# location=1:dims
-# alpha=seq(0.2,0.4,length.out = dims)
-# basefunc=rep("laplace",dims)
+#     0 ,-2,0 ,2 ,0 ,10),nrow=d,ncol=d,byrow=T) # of 20 op hoofddiagonaal
+# location=1:d
+# alpha=seq(0.2,0.4,length.out = d)
+# basefunc=rep("laplace",d)
 # tpars=NULL
 
 
@@ -54,7 +54,7 @@ tpars=c(6)                    # degrees of freedom
 
 # # model dimensions 6
 # reps=400
-# dims=6
+# d=6
 # sampsize=400 #200, 400, 800
 # A=matrix(
 #   c(10,0 ,5 ,0 ,1 ,0 ,
@@ -62,10 +62,10 @@ tpars=c(6)                    # degrees of freedom
 #     -5,-1,10,0 ,6 ,0 ,
 #     0 ,0 ,0 ,10,0 ,-2,
 #     -1,4 ,-6,0 ,10,0 ,
-#     0 ,-2,0 ,2 ,0 ,10),nrow=dims,ncol=dims,byrow=T) # of 20 op hoofddiagonaal
-# location=1:dims
-# alpha=seq(0.2,0.4,length.out = dims)
-# basefunc=rep("laplace",dims)
+#     0 ,-2,0 ,2 ,0 ,10),nrow=d,ncol=d,byrow=T) # of 20 op hoofddiagonaal
+# location=1:d
+# alpha=seq(0.2,0.4,length.out = d)
+# basefunc=rep("laplace",d)
 # tpars=NULL
 
 # # for the fitter
@@ -83,27 +83,27 @@ tpars=c(6)                    # degrees of freedom
 # ## model dimensions 2
 # reps=100
 # sampsize=10000
-# dims=2
+# d=2
 # A=matrix(
 #   c(20,0,
-#     0 ,20),nrow=dims,ncol=dims,byrow=T)
-# location=1:dims
-# alpha=seq(0.2,0.4,length.out = dims)
-# basefunc=rep("laplace",dims)
+#     0 ,20),nrow=d,ncol=d,byrow=T)
+# location=1:d
+# alpha=seq(0.2,0.4,length.out = d)
+# basefunc=rep("laplace",d)
 # tpars=NULL
 
 # ## model dimensions 4
 # reps=100
 # sampsize=10000
-# dims=4
+# d=4
 # A=matrix(
 #   c(20,0 ,5 ,0 ,
 #     0 ,20,1 ,0 ,
 #     -5,-1,20,3 ,
-#     0 ,0 ,-3,20),nrow=dims,ncol=dims,byrow=T)
-# location=1:dims
-# alpha=seq(0.2,0.4,length.out = dims)
-# basefunc=rep("laplace",dims)
+#     0 ,0 ,-3,20),nrow=d,ncol=d,byrow=T)
+# location=1:d
+# alpha=seq(0.2,0.4,length.out = d)
+# basefunc=rep("laplace",d)
 # tpars=NULL
 
 
@@ -111,24 +111,24 @@ tpars=c(6)                    # degrees of freedom
 # ## model dimensions 6
 # reps=100
 # sampsize=10000
-# dims=6
+# d=6
 # A=matrix(
 #   c(20,0 ,5 ,0 ,1 ,0 ,
 #     0 ,20,1 ,0 ,-4,2 ,
 #     -5,-1,20,3 ,5 ,0 ,
 #     0 ,0 ,-3,20,0 ,-2,
 #     -1 ,4,-5,0 ,20,0 ,
-#     0 ,-2,0 ,2 ,0 ,20),nrow=dims,ncol=dims,byrow=T)
-# location=1:dims
-# alpha=seq(0.2,0.4,length.out = dims)
-# basefunc=rep("laplace",dims)
+#     0 ,-2,0 ,2 ,0 ,20),nrow=d,ncol=d,byrow=T)
+# location=1:d
+# alpha=seq(0.2,0.4,length.out = d)
+# basefunc=rep("laplace",d)
 # tpars=NULL
 
 
 # ## model dimensions 8
 # reps=100
 # sampsize=10000
-# dims=8
+# d=8
 # A=matrix(
 #   c(20,0 ,5 ,0 ,1 ,0 ,2 ,0 ,
 #     0 ,20,1 ,0 ,-4,2 ,0 ,1 ,
@@ -137,17 +137,17 @@ tpars=c(6)                    # degrees of freedom
 #     -1 ,4,-5,0 ,20,0 ,0 ,0 ,
 #     0 ,-2,0 ,2 ,0 ,20,1 ,-3,
 #     -2,0 ,-4,3 ,0 ,-1,20,0 ,
-#     0 ,-1,-1,-2,0 ,3 ,0 ,20),nrow=dims,ncol=dims,byrow=T)
-# location=1:dims
-# alpha=seq(0.2,0.4,length.out = dims)
-# basefunc=rep("laplace",dims)
+#     0 ,-1,-1,-2,0 ,3 ,0 ,20),nrow=d,ncol=d,byrow=T)
+# location=1:d
+# alpha=seq(0.2,0.4,length.out = d)
+# basefunc=rep("laplace",d)
 # tpars=NULL
 
 
 # ## model dimensions 10
 # reps=100
 # sampsize=10000
-# dims=10
+# d=10
 # A=matrix(
 #   c(20,0 ,5 ,0 ,1 ,0 ,2 ,0 ,-3,0 ,
 #     0 ,20,1 ,0 ,-4,2 ,0 ,1 ,-2,3 ,
@@ -158,10 +158,10 @@ tpars=c(6)                    # degrees of freedom
 #     -2,0 ,-4,3 ,0 ,-1,20,0 ,0 ,5 ,
 #     0 ,-1,-1,-2,0 ,3 ,0 ,20,5 ,-3,
 #     3 ,2 ,0 ,1 ,0 ,-2,0 ,-5,20,0 ,
-#     0 ,-3,4 ,0 ,-2,0 ,-5,3 ,0 ,20),nrow=dims,ncol=dims,byrow=T)
-# location=1:dims
-# alpha=seq(0.2,0.4,length.out = dims)
-# basefunc=rep("laplace",dims)
+#     0 ,-3,4 ,0 ,-2,0 ,-5,3 ,0 ,20),nrow=d,ncol=d,byrow=T)
+# location=1:d
+# alpha=seq(0.2,0.4,length.out = d)
+# basefunc=rep("laplace",d)
 # tpars=NULL
 
 # for the fitter
@@ -179,7 +179,7 @@ cl <- makeCluster(4)
 registerDoParallel(cl)
 
 # create folder to store output in
-dir.create(paste0("~/D",dims,"S",sampsize))
+dir.create(paste0("~/D",d,"S",sampsize))
 
 result=foreach(i=1:reps,.packages=c('combinat','mrfDepth','nloptr',"optimx"),
                .combine = "cbind",.verbose = T,.errorhandling="remove") %dopar% {
@@ -188,7 +188,7 @@ result=foreach(i=1:reps,.packages=c('combinat','mrfDepth','nloptr',"optimx"),
                  source(file="Code part 1 Functions.R")
 
                  # generating a sample
-                 sample=Xsample(A=A,location=location,basefunc=basefunc,alpha=alpha,sampsize=sampsize,dims=dims,tpars=tpars,seed=seed-i+1)
+                 sample=Xsample(A=A,location=location,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed-i+1)
                  X=sample[[2]]
                  
                  # tracking runtime
@@ -206,7 +206,7 @@ result=foreach(i=1:reps,.packages=c('combinat','mrfDepth','nloptr',"optimx"),
                  
                  # writing the output to the specified directory
                  output=c(fits,time.taken)
-                 filename=paste0("~/D",dims,"S",sampsize,"/run",i,".csv")
+                 filename=paste0("~/D",d,"S",sampsize,"/run",i,".csv")
                  write.csv(output,file=filename)
                }
 stopCluster(cl)
@@ -220,7 +220,7 @@ dataset=data.frame()
 ind=c()
 for (i in 1:reps){
   try({
-    temp_data = t(read.csv(paste0("~/D",dims,"S",sampsize,"/run",i,".csv"), row.names=1))
+    temp_data = t(read.csv(paste0("~/D",d,"S",sampsize,"/run",i,".csv"), row.names=1))
     
     dataset <- rbind(dataset, temp_data) #for each iteration, bind the new data to the building dataset
     ind=c(ind,i)
@@ -237,11 +237,11 @@ if(is.element("t",basefunc)){
 a=intToUtf8(945) # character for alpha
 m=intToUtf8(956) # character for mu
 if(is.null(indt)){
-  colnames(dataset)=c(paste0(a,1:dims),paste0(m,1:dims),paste0("A",apply(expand.grid(1:dims, 1:dims), 1, paste, collapse="")),"log likelihood","time taken (s)")
+  colnames(dataset)=c(paste0(a,1:d),paste0(m,1:d),paste0("A",apply(expand.grid(1:d, 1:d), 1, paste, collapse="")),"log likelihood","time taken (s)")
 } else {
-  colnames(dataset)=c(paste0(a,1:dims),paste0(m,1:dims),paste0("A",apply(expand.grid(1:dims, 1:dims), 1, paste, collapse="")),paste0("df",indt),"log likelihood","time taken (s)")
+  colnames(dataset)=c(paste0(a,1:d),paste0(m,1:d),paste0("A",apply(expand.grid(1:d, 1:d), 1, paste, collapse="")),paste0("df",indt),"log likelihood","time taken (s)")
 }
-save(dataset,file=paste0("~/D",dims,"S",sampsize,".Rdata"))
+save(dataset,file=paste0("~/D",d,"S",sampsize,".Rdata"))
 
 
 
@@ -320,20 +320,20 @@ sorted$manual
 
 i=94
 
-Af=matrix(as.numeric(M[i,(2*dims+1):(2*dims+dims^2)]),nrow=dims)
-af=as.numeric(M[i,1:dims])
+Af=matrix(as.numeric(M[i,(2*d+1):(2*d+d^2)]),nrow=d)
+af=as.numeric(M[i,1:d])
 Af
 
 # check the appropriate elements of the columns to put on the diagonal and put the indices in inds
 inds=c(7,3,1,4,6,2,5,8)
 
-Af[1:dims,]=Af[inds,]
+Af[1:d,]=Af[inds,]
 af=af[inds]
 negdiag=which(diag(Af)<0)
 Af[negdiag,]=-Af[negdiag,]
 af[negdiag]=1-af[negdiag]
-M[i,1:dims]=af
-M[i,(2*dims+1):(2*dims+dims^2)]=Af
+M[i,1:d]=af
+M[i,(2*d+1):(2*d+d^2)]=Af
 sorted$manual
 # optional save for later use
-save(M,file=paste0("~/D",dims,"S",sampsize,"sorted.Rdata"))
+save(M,file=paste0("~/D",d,"S",sampsize,"sorted.Rdata"))
