@@ -2,19 +2,19 @@
 #########################################################################################
 
 # generate sample from the untransformed, independent random variables
-Zsample=function(sampsize,dims,basefunc,alpha,seed=NULL,tpars=NULL){
+Zsample=function(sampsize,d,basefunc,alpha,seed=NULL,tpars=NULL){
   
   # generating uniform samples
   if(!is.null(seed)){
     set.seed(seed)
   }
-  uniformsample=matrix(runif(sampsize*dims),nrow=sampsize,ncol=dims)
+  uniformsample=matrix(runif(sampsize*d),nrow=sampsize,ncol=d)
   
   
   # obtaining sample from independent random variables
-  Z=matrix(NA,nrow=sampsize,ncol=dims)
+  Z=matrix(NA,nrow=sampsize,ncol=d)
   
-  for(i in 1:dims){
+  for(i in 1:d){
     if(basefunc[i]=="laplace"){
       for(j in 1:sampsize){
         Z[j,i]=twopiecelaplacequantile(uniformsample[j,i],alpha[i])
@@ -37,7 +37,7 @@ Zsample=function(sampsize,dims,basefunc,alpha,seed=NULL,tpars=NULL){
 }
 
 # generate a sample from the target distribution
-Xsample=function(A,location,basefunc,alpha,sampsize,dims,seed=NULL,tpars=NULL){
+Xsample=function(A,location,basefunc,alpha,sampsize,d,seed=NULL,tpars=NULL){
   # input:
   # A: dxd mixing matrix for affine transformation
   # location: vector of lengthe d with location of the mode 
@@ -45,18 +45,18 @@ Xsample=function(A,location,basefunc,alpha,sampsize,dims,seed=NULL,tpars=NULL){
   # (options are: "laplace", "normal", "logistic" and "t")
   # alpha: vector of lengthe d with values for skewing parameter (in [0,1])
   # sampsize: the sample size (number of samples needed)
-  # dims: the dimensionality of the data (=d>1)
+  # d: the dimensionality of the data (=d>1)
   # seed: a seed for random number generation
   # tpars: a vector containing the degrees of freedom for possible student-t distributions
   
-  # check if dims is strict larger than 1
-  if(dims<=1){
+  # check if d is strict larger than 1
+  if(d<=1){
     stop("dimensions must be 2 or larger")
   }
   
   
   # check if matrix A has correct dimensions and is invertible
-  if(sum(dim(A)==c(dims,dims))!=2){
+  if(sum(dim(A)==c(d,d))!=2){
     stop("A has wrong dimensions")
   }
   if(det(A)==0){
@@ -64,12 +64,12 @@ Xsample=function(A,location,basefunc,alpha,sampsize,dims,seed=NULL,tpars=NULL){
   }
   
   # check if location has correct length
-  if(length(location)!=dims){
+  if(length(location)!=d){
     stop("location vector has incorrect length")
   }
   
   # check if correct number of basis function are given
-  if(length(basefunc)!=dims){
+  if(length(basefunc)!=d){
     stop("dimensions and number of basis function are not equal")
   }
   
@@ -87,20 +87,20 @@ Xsample=function(A,location,basefunc,alpha,sampsize,dims,seed=NULL,tpars=NULL){
       stop("no/incorrect number of degrees of freedom for student-t distribution provided")
     } else { # create helpvector with degrees of freedom
       index=which(basefunc=="t")
-      df=as.matrix(rep(NA,dims),nrow=1)
+      df=as.matrix(rep(NA,d),nrow=1)
       df[index]=tpars
     }
   }
   
   # check if alpha has correct length and values
   testalpha=c(alpha>=0 & alpha<=1)
-  if(sum(testalpha)!=dims){
+  if(sum(testalpha)!=d){
     stop("invalid or incorrect number of alpha parameters provided")
   }
   
-  Z=Zsample(basefunc = basefunc, alpha = alpha, sampsize = sampsize,dims = dims, seed = seed, tpars = df)
+  Z=Zsample(basefunc = basefunc, alpha = alpha, sampsize = sampsize,d = d, seed = seed, tpars = df)
   
-  X=matrix(NA,nrow=sampsize,ncol=dims)
+  X=matrix(NA,nrow=sampsize,ncol=d)
   for(i in 1:sampsize){
     X[i,]=t(A)%*%Z[i,]+location
   }
