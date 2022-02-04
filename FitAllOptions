@@ -38,6 +38,7 @@ nmods=length(basefuncs[,1])
 
 ### create folder to store output in (put correct name here) ###
 ################################################################
+set.dir(choose.dir()
 dir.create(paste0("~/pokemon"))
 
 # also change the file locations further below to write in this directory
