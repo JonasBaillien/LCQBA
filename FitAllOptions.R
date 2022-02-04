@@ -4,6 +4,7 @@
 
 # please select the correct data and change the directories where output is written, or choose your own data.
 # the fitter can also be changed accordingly in the code below.
+# take care in changing the directories of output and sourced files.
 
 
 ### load in the correct data ###
@@ -63,14 +64,14 @@ registerDoParallel(cl)
 result=foreach(i=1:nmods,.packages=c('nloptr','optimx'),
                .combine = "cbind",.verbose = T,.errorhandling="remove") %dopar% {
                  
-                 # required files
-                 source("Code part 1 Functions.R")
+                 # Required functions and correct path
+                 source("names")
                  
                  # basefunctions of the model fitted to the data
                  basefunc=basefuncs[i,]
                  
                  # fitting the model to the data
-                 fit=MVQBAFD_fit2(data=dat,basefunc=basefunc,seed=seed,maxiter=maxiter,tol=tol,maxstarts=maxstarts,reqfits=reqfits)
+                 fit=LCQBAFD_fit2(data=dat,basefunc=basefunc,seed=seed,maxiter=maxiter,tol=tol,maxstarts=maxstarts,reqfits=reqfits)
 
                  output=c(as.numeric(fit$`fitted parameters`),fit$`log likelihood fit`)
                  
@@ -119,4 +120,4 @@ for (i in 1:nmods){
 modelfit=list("alpha"=alpha_fit,"mu"=mu_fit,"A"=A_fit,"df"=df_fit,"logl"=loglikelihood_fit,"basefunc"=basefunctions_fit)
 
 # save output in correct location (change directory name if needed)
-save(modelfit,file="~/name/fittedmodels_pokemon.Rdata")
+save(modelfit,file="~/name/fittedmodels.Rdata")
