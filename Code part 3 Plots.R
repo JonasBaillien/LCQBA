@@ -1,13 +1,8 @@
-# load in the required functions
+### load in the required functions
 setwd(dir = choose.dir())
-source(file="Code part 1 Functions.R")
+source(file="name.R")
 
-
-###################################################
-### contour plots for the 3 introductory models ###
-###################################################
-
-# another function for plotting the density
+### another function for plotting the density
 n=400 # grid points in 1 direction
 densityf=function(point,basefunc,alpha,mu,B,tpars){
   
@@ -34,10 +29,15 @@ densityf=function(point,basefunc,alpha,mu,B,tpars){
   
   return(dens)
 }
+  
+  
+###################################################
+### contour plots for the 3 introductory models ###
+###################################################
 
 ## model 1
-dims=2
-A=matrix(c(12,-5,4,8),nrow=dims,ncol=dims) # transpose of A is used to generate samples according to the definition
+d=2
+A=matrix(c(12,-5,4,8),nrow=d,ncol=d) # transpose of A is used to generate samples according to the definition
 location=c(20,20)
 alpha=c(0.25,0.65)
 basefunc=c("normal","logistic")
@@ -57,8 +57,8 @@ contour(xtemp,ytemp,fmat,xlab=expression(X[1]),ylab=expression(X[2]),cex.lab=1.5
 
 
 ## model 2
-dims=2
-A=matrix(c(7,0,-6,3),nrow=dims,ncol=dims) # transpose of A is used to generate samples according to the definition
+d=2
+A=matrix(c(7,0,-6,3),nrow=d,ncol=d) # transpose of A is used to generate samples according to the definition
 location=c(20,20)
 alpha=c(0.25,0.65)
 basefunc=c("normal","logistic")
@@ -75,8 +75,8 @@ contour(xtemp,ytemp,fmat,xlab=expression(X[1]),ylab=expression(X[2]),cex.lab=1.5
 
 
 ## model 3
-dims=2
-A=matrix(c(12,0,0,8),nrow=dims,ncol=dims) # transpose of A is used to generate samples according to the definition
+d=2
+A=matrix(c(12,0,0,8),nrow=d,ncol=d) # transpose of A is used to generate samples according to the definition
 location=c(20,20)
 alpha=c(0.25,0.65)
 basefunc=c("normal","t")
@@ -101,8 +101,8 @@ contour(xtemp,ytemp,fmat,xlab=expression(X[1]),ylab=expression(X[2]),cex.lab=1.5
 
 ### simulation model 1 ###
 ##########################
-dims=2
-A=matrix(c(4,-3,1,4),nrow=dims,ncol=dims) # transpose of A is used to generate samples according to the definition
+d=2
+A=matrix(c(4,-3,1,4),nrow=d,ncol=d) # transpose of A is used to generate samples according to the definition
 mu=c(0,0)
 alpha=c(0.35,0.7)
 basefunc=c("normal","t")
@@ -120,8 +120,8 @@ contour(xtemp,ytemp,fmat,xlab=expression(X[1]),ylab=expression(X[2]),cex.lab=1.5
 
 
 reps=400
-dims=2
-A=matrix(c(4,-3,1,4),nrow=dims,ncol=dims) # transpose of A is used to generate samples according to the definition
+d=2
+A=matrix(c(4,-3,1,4),nrow=d,ncol=d) # transpose of A is used to generate samples according to the definition
 mu=c(0,0)
 alpha=c(0.35,0.7)
 basefunc=c("normal","t")
@@ -227,17 +227,17 @@ reldifcov48=abs((var(M48[,1:9])-varcov4/800)/(varcov4/800))
 ### Simulation setting 2 ###
 ############################
 reps=400
-dims=6
+d=6
 A=matrix(
   c(10,0 ,5 ,0 ,1 ,0 ,
     0 ,10,1 ,0 ,-4,2 ,
     -5,-1,10,0 ,6 ,0 ,
     0 ,0 ,0 ,10,0 ,-2,
     -1,4 ,-6,0 ,10,0 ,
-    0 ,-2,0 ,2 ,0 ,10),nrow=dims,ncol=dims,byrow=T) 
-mu=1:dims
-alpha=seq(0.2,0.4,length.out = dims)
-basefunc=rep("laplace",dims)
+    0 ,-2,0 ,2 ,0 ,10),nrow=d,ncol=d,byrow=T) 
+mu=1:d
+alpha=seq(0.2,0.4,length.out = d)
+basefunc=rep("laplace",d)
 tpars=NULL
 
 
@@ -283,8 +283,8 @@ abline(h = A[5,5],col=1)
 ##########################
 reps=400
 n= 800
-dims=2
-A=matrix(c(12,-5,4,8),nrow=dims,ncol=dims) # transpose of A is used to generate samples according to the definition
+d=2
+A=matrix(c(12,-5,4,8),nrow=d,ncol=d) # transpose of A is used to generate samples according to the definition
 mu=c(20,20)
 alpha=c(0.25,0.65)
 basefunc=c("normal","logistic")
@@ -407,7 +407,7 @@ ais=ais
 aisdata=ais[,c(6,9)]
 
 Z=as.matrix(aisdata)
-dims=length(Z[1,])
+d=length(Z[1,])
 n=length(Z[,1])
 
 
@@ -419,7 +419,7 @@ tpars=c(7.301664)
 basefunc=c("normal","normal")
 seed=12457
 
-sample=Xsample(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,dims=dims,tpars=tpars,seed=seed+23)
+sample=Xsample(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed+23)
 X=sample[[2]]
 
 DinDist=hdepth(x=X,z=Z)$depthZ
@@ -438,7 +438,7 @@ tpars=c(7.301664)
 basefunc=c("t","normal")
 seed=12457
 
-sample=Xsample(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,dims=dims,tpars=tpars,seed=seed+23)
+sample=Xsample(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed+23)
 X=sample[[2]]
 
 DinDist=hdepth(x=X,z=Z)$depthZ
@@ -495,10 +495,10 @@ tpars=pokemonfits$df[75,]
 
 # generate a sample to approximate the theoretical distribution
 sampsize=5000
-dims=6
+d=6
 seed=12457
 
-sample=Xsample(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,dims=dims,tpars=tpars,seed=seed+23)
+sample=Xsample(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed+23)
 X=sample[[2]]
 
 DinDist=hdepth(x=X,z=Z)$depthZ
