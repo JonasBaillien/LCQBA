@@ -188,7 +188,7 @@ result=foreach(i=1:reps,.packages=c('combinat','mrfDepth','nloptr',"optimx"),
                  source(file="names")
 
                  # generating a sample
-                 sample=Xsample(A=A,location=location,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed-i+1)
+                 sample=rLCQBA(A=A,location=location,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed-i+1)
                  X=sample[[2]]
                  
                  # tracking runtime
