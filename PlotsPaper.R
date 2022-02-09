@@ -419,7 +419,7 @@ tpars=c(7.301664)
 basefunc=c("normal","normal")
 seed=12457
 
-sample=Xsample(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed+23)
+sample=rLCQBA(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed+23)
 X=sample[[2]]
 
 DinDist=hdepth(x=X,z=Z)$depthZ
@@ -438,7 +438,7 @@ tpars=c(7.301664)
 basefunc=c("t","normal")
 seed=12457
 
-sample=Xsample(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed+23)
+sample=rLCQBA(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed+23)
 X=sample[[2]]
 
 DinDist=hdepth(x=X,z=Z)$depthZ
@@ -498,7 +498,7 @@ sampsize=5000
 d=6
 seed=12457
 
-sample=Xsample(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed+23)
+sample=rLCQBA(A=A,location=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed+23)
 X=sample[[2]]
 
 DinDist=hdepth(x=X,z=Z)$depthZ
