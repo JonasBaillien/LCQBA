@@ -354,3 +354,19 @@ FIM=function(alpha,mu,A,basefunc,tpars=NULL){
   
   return(I)
 }
+
+
+###############
+### Example ###
+###############
+alpha=c(0.35,0.7)
+mu=c(0,0)
+A=matrix(c(4,-3,1,4),nrow=2,ncol=2)
+basefunc=c("normal","laplace")
+tpars=c(NA,NA)
+
+FI=FIM(alpha=alpha,mu=mu,A=A,basefunc=basefunc,tpars=tpars)
+FI
+
+varcov=solve(FI)
+varcov
