@@ -40,8 +40,8 @@ Zsample=function(sampsize,d,basefunc,alpha,seed=NULL,tpars=NULL){
 rLCQBA=function(A,mu,basefunc,alpha,sampsize,d,seed=NULL,tpars=NULL){
   # input:
   # A: dxd mixing matrix for affine transformation
-  # mu: vector of lengthe d with location of the mode 
-  # basefunc: a character vector of lengthe d containing the underlying basis distrubution.
+  # mu: vector of length d with location of the mode 
+  # basefunc: a character vector of length d containing the underlying reference distribution.
   # (options are: "laplace", "normal", "logistic" and "t")
   # alpha: vector of lengthe d with values for skewing parameter (in [0,1])
   # sampsize: the sample size (number of samples needed)
