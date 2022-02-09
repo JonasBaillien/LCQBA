@@ -35,32 +35,33 @@ twopiecelogisticdensity=function(x,alpha){
 
 # Two-piece normal distribution with skewing parameter alpha in numeric vector x (location = 0, scale = 1)
 twopiecenormaldistribution=function(x,alpha){
-  f=(x<=0)*2*alpha*pnorm(q=(1-alpha)*x,mean=0,sd=1)+
-    (x>0)*2*alpha-1+2*(1-alpha)*pnorm(q=alpha*x,mean=0,sd=1)
+  f=(x<=0)*(2*alpha*pnorm(q=(1-alpha)*x,mean=0,sd=1))+
+    (x>0)*(2*alpha-1+2*(1-alpha)*pnorm(q=alpha*x,mean=0,sd=1))
   return(f)
 }
 
 # Two-piece laplace distribution with skewing parameter alpha in numeric vector x (location = 0, scale = 1)
 twopiecelaplacedistribution=function(x,alpha){
-  f=(x<=0)*2*alpha*plaplace(q=(1-alpha)*x,location=0,scale=1)+
-    (x>0)*2*alpha-1+2*(1-alpha)*plaplace(q=alpha*x,location=0,scale=1)
+  f=(x<=0)*(2*alpha*plaplace(q=(1-alpha)*x,location=0,scale=1))+
+    (x>0)*(2*alpha-1+2*(1-alpha)*plaplace(q=alpha*x,location=0,scale=1))
   return(f)
 }
 
 # Two-piece student-t distribution with skewing parameter alpha in numeric vector x (location = 0, scale = 1)
 # df=nu
 twopiecestudentdistribution=function(x,alpha,nu){
-  f=(x<=0)*2*alpha*pt(q=(1-alpha)*x,df=nu)+
-    (x>0)*2*alpha-1+2*(1-alpha)*pt(q=alpha*x,df=nu)
+  f=(x<=0)*(2*alpha*pt(q=(1-alpha)*x,df=nu))+
+    (x>0)*(2*alpha-1+2*(1-alpha)*pt(q=alpha*x,df=nu))
   return(f)
 }
 
 # Two-piece logistic distribution with skewing parameter alpha in numeric vector x (location = 0, scale = 1)
 twopiecelogisticdistribution=function(x,alpha){
-  f=(x<=0)*2*alpha*plogis(q=(1-alpha)*x,location=0,scale=1)+
-    (x>0)*2*alpha-1+2*(1-alpha)*plogis(q=alpha*x,location=0,scale=1)
+  f=(x<=0)*(2*alpha*plogis(q=(1-alpha)*x,location=0,scale=1))+
+    (x>0)*(2*alpha-1+2*(1-alpha)*plogis(q=alpha*x,location=0,scale=1))
   return(f)
 }
+
 
 
 
@@ -150,3 +151,15 @@ twopiecelogisticderiv=function(x,alpha){
   -(x>0)*alpha*(1-exp(-alpha*x))/(1+exp(-alpha*x))
   return(f)
 }
+
+
+###############
+### Example ###
+###############
+x=seq(-5,5,by=0.01)
+y=twopiecelogisticdensity(x,0.4)
+plot(x,y,type="l")
+
+x=seq(-5,5,by=0.01)
+y=twopiecelaplacedistribuiton(x,0.6)
+plot(x,y,type="l")
