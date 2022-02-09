@@ -22,9 +22,9 @@ source("names")
 ## Simulation setting 1
 reps=400                      # repetitions
 sampsize=800                  # sample size
-d=2                        # dimensions
+d=2                           # dimensions
 A=matrix(c(4,-3,1,4),nrow=d,ncol=d) # transpose of A is used to generate samples according to the definition
-location=c(0,0)               # mu
+mu=c(0,0)                     # mu
 alpha=c(0.35,0.7)             # alpha
 basefunc=c("normal","t")      # type of base function
 tpars=c(6)                    # degrees of freedom
@@ -41,7 +41,7 @@ tpars=c(6)                    # degrees of freedom
 #     0 ,0 ,0 ,10,0 ,-2,
 #     -1,4 ,-6,0 ,10,0 ,
 #     0 ,-2,0 ,2 ,0 ,10),nrow=d,ncol=d,byrow=T) # of 20 op hoofddiagonaal
-# location=1:d
+# mu=1:d
 # alpha=seq(0.2,0.4,length.out = d)
 # basefunc=rep("laplace",d)
 # tpars=NULL
@@ -63,7 +63,7 @@ tpars=c(6)                    # degrees of freedom
 #     0 ,0 ,0 ,10,0 ,-2,
 #     -1,4 ,-6,0 ,10,0 ,
 #     0 ,-2,0 ,2 ,0 ,10),nrow=d,ncol=d,byrow=T) # of 20 op hoofddiagonaal
-# location=1:d
+# mu=1:d
 # alpha=seq(0.2,0.4,length.out = d)
 # basefunc=rep("laplace",d)
 # tpars=NULL
@@ -87,7 +87,7 @@ tpars=c(6)                    # degrees of freedom
 # A=matrix(
 #   c(20,0,
 #     0 ,20),nrow=d,ncol=d,byrow=T)
-# location=1:d
+# mu=1:d
 # alpha=seq(0.2,0.4,length.out = d)
 # basefunc=rep("laplace",d)
 # tpars=NULL
@@ -101,7 +101,7 @@ tpars=c(6)                    # degrees of freedom
 #     0 ,20,1 ,0 ,
 #     -5,-1,20,3 ,
 #     0 ,0 ,-3,20),nrow=d,ncol=d,byrow=T)
-# location=1:d
+# mu=1:d
 # alpha=seq(0.2,0.4,length.out = d)
 # basefunc=rep("laplace",d)
 # tpars=NULL
@@ -119,7 +119,7 @@ tpars=c(6)                    # degrees of freedom
 #     0 ,0 ,-3,20,0 ,-2,
 #     -1 ,4,-5,0 ,20,0 ,
 #     0 ,-2,0 ,2 ,0 ,20),nrow=d,ncol=d,byrow=T)
-# location=1:d
+# mu=1:d
 # alpha=seq(0.2,0.4,length.out = d)
 # basefunc=rep("laplace",d)
 # tpars=NULL
@@ -138,7 +138,7 @@ tpars=c(6)                    # degrees of freedom
 #     0 ,-2,0 ,2 ,0 ,20,1 ,-3,
 #     -2,0 ,-4,3 ,0 ,-1,20,0 ,
 #     0 ,-1,-1,-2,0 ,3 ,0 ,20),nrow=d,ncol=d,byrow=T)
-# location=1:d
+# mu=1:d
 # alpha=seq(0.2,0.4,length.out = d)
 # basefunc=rep("laplace",d)
 # tpars=NULL
@@ -159,7 +159,7 @@ tpars=c(6)                    # degrees of freedom
 #     0 ,-1,-1,-2,0 ,3 ,0 ,20,5 ,-3,
 #     3 ,2 ,0 ,1 ,0 ,-2,0 ,-5,20,0 ,
 #     0 ,-3,4 ,0 ,-2,0 ,-5,3 ,0 ,20),nrow=d,ncol=d,byrow=T)
-# location=1:d
+# mu=1:d
 # alpha=seq(0.2,0.4,length.out = d)
 # basefunc=rep("laplace",d)
 # tpars=NULL
@@ -188,7 +188,7 @@ result=foreach(i=1:reps,.packages=c('combinat','mrfDepth','nloptr',"optimx"),
                  source(file="names")
 
                  # generating a sample
-                 sample=rLCQBA(A=A,location=location,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed-i+1)
+                 sample=rLCQBA(A=A,mu=mu,basefunc=basefunc,alpha=alpha,sampsize=sampsize,d=d,tpars=tpars,seed=seed-i+1)
                  X=sample[[2]]
                  
                  # tracking runtime
