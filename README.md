@@ -1,7 +1,7 @@
 # LCQBA
 R-code accompanying "Flexible asymmetric multivariate distributions based on two-piece univariate distributions"
 
-We recommend installing the latest version of R to make sure all functions run properly. This code will later be made available in an R-package for quick and easy use.
+We recommend installing the latest version of R to make sure all functions run properly. This code will later on be made available in an R-package.
 
 For theoretical result on which this code is based, we refer to
   - Baillien, J et al. (2021). Flexible asymmetric multivariate distributions based on two-piece univariate distributions. Under review.
