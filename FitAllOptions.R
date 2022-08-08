@@ -7,17 +7,12 @@
 # take care in changing the directories of output and sourced files.
 
 
-### load in the correct data ###
-################################
+### load in the  data ###
+#########################
 
-# read in the Pokemon data
-Pokemon <- read.csv("~/Pokemon.csv", header=FALSE, comment.char="#") 
-Pokemondata=as.matrix(Pokemon[,6:11])
-dat=as.matrix(Pokemondata)
-
-# # load ais data
-# library(DAAG)
-# dat=as.matrix(ais[,c(6,9)])
+# load ais data
+library(DAAG)
+dat=as.matrix(ais[,c(6,9)])
 
 
 
