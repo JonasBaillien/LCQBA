@@ -3,6 +3,14 @@
 
 # generate sample from the untransformed, independent random variables
 Zsample=function(sampsize,d,basefunc,alpha,seed=NULL,tpars=NULL){
+  # input:
+  # basefunc: a character vector of length d containing the underlying reference distribution.
+  # (options are: "laplace", "normal", "logistic" and "t")
+  # alpha: vector of lengthe d with values for skewing parameter (in [0,1])
+  # sampsize: the sample size (number of samples needed)
+  # d: the dimensionality of the data (=d>1)
+  # seed: a seed for random number generation
+  # tpars: a vector containing the degrees of freedom for possible student-t distributions
   
   # generating uniform samples
   if(!is.null(seed)){
@@ -108,24 +116,24 @@ rLCQBA=function(A,mu,basefunc,alpha,sampsize,d,seed=NULL,tpars=NULL){
 }
 
 
-###############
-### Example ###
-###############
-# model parameters
-alpha=c(0.35,0.7)
-mu=c(0,0)
-A=matrix(c(4,-3,1,4),nrow=2,ncol=2)
-basefunc=c("normal","laplace")
-tpars=c(NA,NA)
+# ###############
+# ### Example ###
+# ###############
+# # model parameters
+# alpha=c(0.35,0.7)
+# mu=c(0,0)
+# A=matrix(c(4,-3,1,4),nrow=2,ncol=2)
+# basefunc=c("normal","laplace")
+# tpars=c(NA,NA)
 
 
-# generate a sample
-samp=rLCQBA(alpha = alpha,mu = mu,A = A,basefunc = basefunc,
+# # generate a sample
+# samp=rLCQBA(alpha = alpha,mu = mu,A = A,basefunc = basefunc,
                  tpars = tpars,sampsize = 500,seed = 248)
-Z=samp$Z
-X=samp$X
+# Z=samp$Z
+# X=samp$X
 
-# visualize unmixed and final data
-plot(X,col="red",xlab="",ylab="")
-points(Z,col="black")
-legend("bottomleft",legend=c('Z','X'),col=c(1,2),pch=c(1,1))
+# # visualize unmixed and final data
+# plot(X,col="red",xlab="",ylab="")
+# points(Z,col="black")
+# legend("bottomleft",legend=c('Z','X'),col=c(1,2),pch=c(1,1))
