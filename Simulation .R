@@ -40,7 +40,7 @@ tpars=c(6)                    # degrees of freedom
 #     -5,-1,10,0 ,6 ,0 ,
 #     0 ,0 ,0 ,10,0 ,-2,
 #     -1,4 ,-6,0 ,10,0 ,
-#     0 ,-2,0 ,2 ,0 ,10),nrow=d,ncol=d,byrow=T) # of 20 op hoofddiagonaal
+#     0 ,-2,0 ,2 ,0 ,10),nrow=d,ncol=d,byrow=T) # or 20 on main diagonal
 # mu=1:d
 # alpha=seq(0.2,0.4,length.out = d)
 # basefunc=rep("laplace",d)
@@ -62,7 +62,7 @@ tpars=c(6)                    # degrees of freedom
 #     -5,-1,10,0 ,6 ,0 ,
 #     0 ,0 ,0 ,10,0 ,-2,
 #     -1,4 ,-6,0 ,10,0 ,
-#     0 ,-2,0 ,2 ,0 ,10),nrow=d,ncol=d,byrow=T) # of 20 op hoofddiagonaal
+#     0 ,-2,0 ,2 ,0 ,10),nrow=d,ncol=d,byrow=T) # or 20 on main diagonal
 # mu=1:d
 # alpha=seq(0.2,0.4,length.out = d)
 # basefunc=rep("laplace",d)
@@ -222,7 +222,7 @@ for (i in 1:reps){
   try({
     temp_data = t(read.csv(paste0("~/D",d,"S",sampsize,"/run",i,".csv"), row.names=1))
     
-    dataset <- rbind(dataset, temp_data) #for each iteration, bind the new data to the building dataset
+    dataset <- rbind(dataset, temp_data) # for each iteration, bind the new data to the building dataset
     ind=c(ind,i)
   },silent=T)
 }
