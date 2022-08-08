@@ -42,18 +42,18 @@ dLCQBA=function(x,alpha,mu,A,basefunc,tpars,LOG=FALSE){
   return(dens)
 }
 
-###############
-### Example ###
-###############
-# model parameters
-alpha=c(0.35,0.7)
-mu=c(0,0)
-A=matrix(c(4,-3,1,4),nrow=2,ncol=2)
-basefunc=c("normal","laplace")
-tpars=c(NA,NA)
+# ###############
+# ### Example ###
+# ###############
+# # model parameters
+# alpha=c(0.35,0.7)
+# mu=c(0,0)
+# A=matrix(c(4,-3,1,4),nrow=2,ncol=2)
+# basefunc=c("normal","laplace")
+# tpars=c(NA,NA)
 
-# points in which we want to know the density function
-y=rbind(c(0,0),c(20,-20),c(20,20))
+# # points in which we want to know the density function
+# y=rbind(c(0,0),c(20,-20),c(20,20))
 
-# calculate the value of the density in y
-dLCQBA(x = y,alpha = alpha,mu = mu,A = A,basefunc = basefunc,tpars = tpars,LOG = F)
+# # calculate the value of the density in y
+# dLCQBA(x = y,alpha = alpha,mu = mu,A = A,basefunc = basefunc,tpars = tpars,LOG = F)
