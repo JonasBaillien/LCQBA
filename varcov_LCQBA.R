@@ -72,18 +72,18 @@ varcov_LCQBA=function(alpha,A,basefunc,tpars){
   return(list("correlation"=cormat,"covariance"=covmat))
 }
 
-###############
-### example ###
-###############
-# model parameters
-alpha=c(0.35,0.7)
-mu=c(0,0)
-A=matrix(c(4,-3,1,4),nrow=2,ncol=2)
-basefunc=c("normal","laplace")
-tpars=c(NA,NA)
+# ###############
+# ### example ###
+# ###############
+# # model parameters
+# alpha=c(0.35,0.7)
+# mu=c(0,0)
+# A=matrix(c(4,-3,1,4),nrow=2,ncol=2)
+# basefunc=c("normal","laplace")
+# tpars=c(NA,NA)
 
 
-# variance-covariance structure of the model
-varcov=varcov_LCQBA(alpha = alpha,A = A,basefunc = basefunc,tpars = tpars)
-varcov$covariance
-varcov$correlation
+# # variance-covariance structure of the model
+# varcov=varcov_LCQBA(alpha = alpha,A = A,basefunc = basefunc,tpars = tpars)
+# varcov$covariance
+# varcov$correlation
