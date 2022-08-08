@@ -156,10 +156,10 @@ twopiecelogisticderiv=function(x,alpha){
 ###############
 ### Example ###
 ###############
-x=seq(-5,5,by=0.01)
-y=twopiecelogisticdensity(x,0.4)
-plot(x,y,type="l")
+# x=seq(-5,5,by=0.01)
+# y=twopiecelogisticdensity(x,0.4)
+# plot(x,y,type="l")
 
-x=seq(-5,5,by=0.01)
-y=twopiecelaplacedistribuiton(x,0.6)
-plot(x,y,type="l")
+# x=seq(-5,5,by=0.01)
+# y=twopiecelaplacedistribuiton(x,0.6)
+# plot(x,y,type="l")
