@@ -4,7 +4,8 @@ R-code accompanying "Flexible asymmetric multivariate distributions based on two
 We recommend installing the latest version of R to make sure all functions run properly. This code will later on be made available in an R-package.
 
 For theoretical result on which this code is based, we refer to
-  - Flexible asymmetric multivariate distributions based on two-piece univariate distributions. Under review.
+  - Baillien, J., Gijbels, I. and Verhasselt, A. (2022). Flexible asymmetric multivariate distributions based on two-piece univariate distributions. The
+    Annals of the Institute of Statistical Mathematics, to appear (with online Supplementary Material). DOI:10.1007/s10463-022-00842-6
   - Gijbels, I. et al. (2019). On quantile-based asymmetric family of distributions: Properties and inference. International Statistical Review, 87(3):471–504.
 
 Required libraries:
